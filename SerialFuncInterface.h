@@ -40,6 +40,11 @@ struct TypedParameter
 
 typedef struct TypedParameter TypedParameter;
 
+/**
+ * @brief Class to handle serial interface commands
+ * 
+ * 
+ */
 class SerialFuncInterfaceClass
 {
  protected:
@@ -63,18 +68,76 @@ class SerialFuncInterfaceClass
 
 
  public:
+ /**
+  * @brief Construct a new Serial Func Interface Class object
+  * 
+  */
 	SerialFuncInterfaceClass();
+	/**
+	 * @brief Construct a new Serial Func Interface Class object
+	 * 
+	 * @param maxfuncnum need to set up the max number of functions before starting
+	 */
 	SerialFuncInterfaceClass(unsigned int maxfuncnum);
+	/**
+	 * @brief Construct a new Serial Func Interface Class object
+	 * 
+	 * @param maxfuncnum need to set up the max number of functions before starting
+	 * @param id You can overwrite the default ID
+	 */
 	SerialFuncInterfaceClass(unsigned int maxfuncnum, String id);
 
+	/**
+	 * @brief Set the Baud rate
+	 * 
+	 * @param baud Baud rate
+	 */
 	void SetBaud(unsigned int baud);
 
+	/**
+	 * @brief Register a new function
+	 * 
+	 * @param nfc New funcion combination
+	 * @return true It worked
+	 * @return false It failed
+	 */
 	bool AddFunc(NameFuncCombo nfc);
+
+	/**
+	 * @brief Add an array of funcions
+	 * 
+	 * @param nfc New funcion combination
+	 * @param length Number of new funcions added
+	 * @return true It worked
+	 * @return false It failed
+	 */
 	bool AddFunc(NameFuncCombo nfc[],unsigned int length);
+
+	/**
+	 * @brief Deal with any undealed with messages
+	 * 
+	 * @return true 
+	 * @return false 
+	 */
 	bool ParseSerial();
 
+	/**
+	 * @brief The class always will have an ID function which returns an ID
+	 * 
+	 * @param val Input string
+	 * @return String ID
+	 */
 	static String IDFunc(String * val);
 
+	/**
+	 * @brief Helper funcion to deal with parameters
+	 * 
+	 * @param out Parameter list out
+	 * @param outlen length of list
+	 * @param In Input string
+	 * @return true 
+	 * @return false 
+	 */
 	static bool ParseArguments(TypedParameter * out, int outlen, String * In);
 
 };

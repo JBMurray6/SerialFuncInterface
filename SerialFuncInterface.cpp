@@ -3,6 +3,7 @@
 // 
 #include "SerialFuncInterface.h"
 
+
 String SerialFuncInterfaceClass::ID = "20171227_JBM";
 
 SerialFuncInterfaceClass::SerialFuncInterfaceClass()
