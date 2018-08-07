@@ -43,7 +43,17 @@ typedef struct TypedParameter TypedParameter;
 /**
  * @brief Class to handle serial interface commands
  * 
- * 
+ *   Commands ("Funcionts") take the form of:
+ * Set commands:
+ *  [Identifier] [Param];
+ * 	Ex: Value 100;\n
+ * Get commands
+ *  [Identifier]?;
+ * 	Ex: Value?;\n
+ * Command with more than one parameter:
+ * 	Ex: Value 100,200;\n
+ * Multiple commands can be sent in a line:
+ *  Ex: Value1 100;Value2 200;Value1?;\n
  */
 class SerialFuncInterfaceClass
 {
@@ -70,7 +80,7 @@ class SerialFuncInterfaceClass
  public:
  /**
   * @brief Construct a new Serial Func Interface Class object
-  * 
+  *  
   */
 	SerialFuncInterfaceClass();
 	/**
